@@ -10,25 +10,38 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
+        }
+
+        /* Overlay for readability */
+        .overlay {
+            background: rgba(255, 255, 255, 0.9);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         /* Header Section */
         header {
-            background-color: #007bff;
+            background-color: rgba(0, 123, 255, 0.8);
             color: white;
             text-align: center;
             padding: 20px 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         header img {
             display: block;
             margin: 0 auto;
+            border-radius: 50%;
         }
 
         header h1 {
-            margin: 0;
+            margin: 10px 0;
             font-size: 2.5rem;
         }
 
@@ -62,11 +75,11 @@
         }
 
         .route-item {
-            width: 300px;
-            background: white;
+            width: 280px;
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             padding: 15px 10px;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -81,7 +94,7 @@
 
         .route-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Footer Section */
@@ -91,6 +104,9 @@
             text-align: center;
             padding: 10px 0;
             font-size: 0.9rem;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
         }
 
         footer img {
@@ -100,40 +116,37 @@
     </style>
 </head>
 <body>
+    <div class="overlay">
+        <!-- Header with an Image -->
+        <header>
+            <img src="iocl_logo.png" alt="Route Finder Logo" width="70">
+            <h1>IOCL Kozhikode Depot</h1>
+            <p>Journey Risk Management Tool</p>
+        </header>
 
-    <!-- Header with an Image -->
-    <header>
-        <img src="iocl logo.png" alt="Route Finder Logo" width="50">
-        <h1>IOCL KOZHIKODE DEPOT  </h1>
-        <p>JOURNEY RISK MANAGEMENT TOOL</p>
-    </header>
+        <!-- Main Content Placeholder -->
+        <div style="padding: 20px; text-align: center;">
+            <p>Welcome to JRM Tool. Start by searching for your desired RO/Consumer JRM below.</p>
+        </div>
 
-    <!-- Main Content Placeholder -->
-    <div style="padding: 20px; text-align: center;">
-        <p>Welcome to JRM tool ,start by searching for your desired RO/CONSUMER JRM below</p>
+        <!-- Search Box -->
+        <input type="text" id="searchBox" class="search-bar" placeholder="Search for a route...">
+
+        <!-- Route List -->
+        <ul class="route-list" id="routeList">
+            <!-- Route links will be generated dynamically -->
+        </ul>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 IOCL Journey Risk Management. All rights reserved.</p>
+        </footer>
     </div>
-
-    <!-- Search Box -->
-    <input type="text" id="searchBox" class="search-bar" placeholder="Search for a route...">
-
-    <!-- Route List -->
-    <ul class="route-list" id="routeList">
-        <!-- Route links will be generated dynamically -->
-    </ul>
-
-    <!-- Footer with an Image -->
-    <footer>
-        <p>&copy; 2025 Route Finder. All rights reserved.</p>
-    </footer>
 
     <script>
         // List of routes
         const routes = [
-            "MAP_ALKOS PETROLEUM AGENCY.html",
-"MAP_AMARAVATHI AUTO FUELS.html",
-"MAP_AMP FUELS.html",
-"MAP_ANIYOTH FUELS.html",
-"MAP_APPOOZE PETROLEUM.html",
+            "MAP_APPOOZE PETROLEUM.html",
 "MAP_AROMA PETROLS.html",
 "MAP_ASHMIN TRADE LINKS.html",
 "MAP_ATHANI FUELS125035.html",
@@ -281,16 +294,6 @@
 "MAP_RAVEENA FUELS.html",
 "MAP_ROYAL PETROLEUM.html",
 "MAP_ROYALE PETROLEUM.html",
-"MAP__KALLIKKANDY PETROLEUM.html",
-"MAP_348907-MUNDA FUELS.html",
-"MAP_A.M.PETROLEUM125022.html",
-"MAP_A.T.R PETROLEUM.html",
-"MAP_ABRECO FUELS.html",
-"MAP_AISWARYA FUELS.html",
-"MAP_AISWARYA PETROLEUM.html",
-"MAP_ALAA AUTO FUELS.html","RTD_YEMPEES PETROLEUM.html",
-"RTD_YESODHAM FILLING STATION.html",
-"RTDP HAMZA HAJI & SONS125235.html",
 "MAP_S.B.FUELS.html",
 "MAP_SAI PETROLEUM (EX FORTUNE FUELS).html",
 "MAP_SAI SASTHA PETROLEUM.html",
@@ -529,8 +532,23 @@
 "RTD_VETTATHUR PETROLEUM.html",
 "RTD_WAYANAD FUELS.html",
 "RTD_YATRA FUELS (KSRTC MAVOOR RD).html",
+"RTD_YEMPEES PETROLEUM.html",
+"RTD_YESODHAM FILLING STATION.html",
+"RTDP HAMZA HAJI & SONS125235.html",
+"MAP__KALLIKKANDY PETROLEUM.html",
+"MAP_348907-MUNDA FUELS.html",
+"MAP_A.M.PETROLEUM125022.html",
+"MAP_A.T.R PETROLEUM.html",
+"MAP_ABRECO FUELS.html",
+"MAP_AISWARYA FUELS.html",
+"MAP_AISWARYA PETROLEUM.html",
+"MAP_ALAA AUTO FUELS.html",
+"MAP_ALKOS PETROLEUM AGENCY.html",
+"MAP_AMARAVATHI AUTO FUELS.html",
+"MAP_AMP FUELS.html",
+"MAP_ANIYOTH FUELS.html",
 
-            // Add all other route file names here...B.MAHESH,SM(OPS)
+            // Add all other route file names here...
         ];
 
         // Generate the route list
@@ -560,6 +578,5 @@
             });
         });
     </script>
-
 </body>
 </html>
